@@ -420,8 +420,8 @@ def cmd_start(message: types.Message) -> None:
     text = (
         f"Привет, {message.chat.first_name or 'друг'}.\n"
         f"Добро пожаловать в бот kaif.\n"
-        f"Инфо-канал: {CHANNEL}\n"
-        f"Поддержка: {SUPPORT}\n\n"
+        f"Инфо-канал: @solibolivotbot\n"
+        f"Поддержка: solizdes@proton.me\n\n"
         "Выберите город доставки:"
     )
     bot.send_message(message.chat.id, text, reply_markup=city_keyboard())
