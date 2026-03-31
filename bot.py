@@ -23,7 +23,6 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID_RAW = os.getenv("ADMIN_ID")
 CHANNEL = os.getenv("CHANNEL_URL", "@your_channel")
 SUPPORT = os.getenv("SUPPORT_USERNAME", "@support")
-PAYMENT_URL = os.getenv("PAYMENT_URL", "https://example.com/pay")
 RUB_PER_USD_RAW = os.getenv("RUB_PER_USD", "100")
 CRYPTO_WALLET_TRC20 = os.getenv("CRYPTO_WALLET_TRC20", "TNcCnFM6q573qiQksJxnQFAb2cq7mZDDNv")
 USD_RUB_API_URL = os.getenv("USD_RUB_API_URL", "https://open.er-api.com/v6/latest/USD")
@@ -636,11 +635,6 @@ def on_option(call: types.CallbackQuery) -> None:
         'После оплаты нажми кнопку "Я оплатил".',
         reply_markup=paid_kb,
     )
-    pay_url = (PAYMENT_URL or "").strip()
-    if pay_url:
-        pay_kb = types.InlineKeyboardMarkup()
-        pay_kb.add(types.InlineKeyboardButton(text="Перейти к оплате (карта/сайт)", url=pay_url))
-        bot.send_message(message.chat.id, "Оплата картой / на сайте — кнопка ниже:", reply_markup=pay_kb)
 
 
 @bot.message_handler(content_types=["text"])
