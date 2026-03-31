@@ -15,6 +15,11 @@ WEBHOOK_PATH = (os.getenv("WEBHOOK_PATH") or "/webhook").strip()
 app = Flask(__name__)
 
 
+@app.get("/")
+def root() -> tuple[str, int]:
+    return "ok", 200
+
+
 @app.get("/health")
 def health() -> tuple[str, int]:
     return "ok", 200
